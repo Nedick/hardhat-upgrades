@@ -1,16 +1,23 @@
-const { network } = require("hardhat")
+const { network, VERIFICATION_BLOCK_CONFIRMATIONS } = require("hardhat")
 const { developmentChains } = require("../helper-hardhat-config")
+const { verify } = require("../helper-functions")
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
+
+    const waitBlockConfirmations = developmentChains.includes(network.name)
+        ? 1
+        : VERIFICATION_BLOCK_CONFIRMATIONS
+
+    log("----------------------------------------------------")
 
     log("------------")
     const box = await deploy("Box", {
         from: deployer,
         args: [],
         log: true,
-        waitConfirmations: network.config.blockConfirmations,
+        waitConfirmations: waitBlockConfirmations,
         proxy: {
             proxyContract: "OpenZeppelinTransparentProxy",
             viaAdminContract: {
