@@ -13,3 +13,6 @@ coverage.json
 
 # Log Files
 *.log
+
+# OpneZeppelin generated files
+.openzeppelin/
