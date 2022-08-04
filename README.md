@@ -1,5 +1,9 @@
 # Hardhat Upgrades
 
+### Rinkeby test network contract addresses:
+- BoxProxyAdmin - 0x874c6AABEB8300e76eD354567D7Ba689DDc7974f
+- BoxV2 contract - 0x0097D36FC990FaE45FB7684C6e556bD6C28d007C
+
 # Getting Started
 
 ## Requirements
